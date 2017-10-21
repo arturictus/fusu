@@ -1,8 +1,12 @@
-# Fusu
+# Fusu (Functional Support)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fusu`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gems intends to add all the convinient methods and helpers from ActiveSupport in a functional way.
 
-TODO: Delete this and the text above, and describe your gem
+why?
+
+I love the easy a convinient methods `ActiveSupport` adds to ruby.
+I do not like to build gems that depend in a current version of `ActiveSupport` that could mean this gems will not be able to work with different `Rails` versions.
+As well the overriding aproach of `ActiveSupport` could get messy in big projects and harder to maintain, the functional aproach it's easier to keep dependencies and `class` overridings.
 
 ## Installation
 
@@ -22,7 +26,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### blank?
+
+```ruby
+Fusu.blank?(nil) #=> true
+Fusu.blank?('') #=> true
+Fusu.blank?('fusu') #=> false
+Fusu.blank?([]) #=> true
+Fusu.blank?([1]) #=> false
+# etc ...
+```
+
+### Array
+
+#### wrap
+```ruby
+Fusu::Array.wrap(nil) # => []
+Fusu::Array.wrap([]) # => []
+Fusu::Array.wrap([1]) # => [1]
+```
 
 ## Development
 
@@ -38,4 +60,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
