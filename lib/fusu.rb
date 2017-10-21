@@ -1,5 +1,6 @@
 require "fusu/version"
-
+require "fusu/blank"
 module Fusu
-  # Your code goes here...
+  extend Blank
 end
+require "fusu/array"
