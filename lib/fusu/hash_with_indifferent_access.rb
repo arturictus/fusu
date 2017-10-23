@@ -56,6 +56,7 @@ module Fusu
     end
 
     def initialize(constructor = {})
+
       if constructor.respond_to?(:to_hash)
         super()
         update(constructor)
@@ -81,7 +82,7 @@ module Fusu
     end
 
     def self.[](*args)
-      new.merge!(Hash[*args])
+      new.merge!(::Hash[*args])
     end
 
     alias_method :regular_writer, :[]= unless method_defined?(:regular_writer)
@@ -231,8 +232,8 @@ module Fusu
     def deep_stringify_keys!; self end
     def stringify_keys; dup end
     def deep_stringify_keys; dup end
-    def symbolize_keys; to_hash.symbolize_keys! end
-    def deep_symbolize_keys; to_hash.deep_symbolize_keys! end
+    def symbolize_keys; Fusu::Hash.symbolize_keys!(to_hash) end
+    def deep_symbolize_keys; Fusu::Hash.deep_symbolize_keys!(to_hash) end
     def to_options!; self end
 
     def select(*args, &block)
@@ -245,7 +246,7 @@ module Fusu
 
     # Convert to a regular hash with string keys.
     def to_hash
-      _new_hash = Hash.new
+      _new_hash = ::Hash.new
       set_defaults(_new_hash)
 
       each do |key, value|
@@ -260,13 +261,13 @@ module Fusu
       end
 
       def convert_value(value, options = {})
-        if value.is_a? Hash
+        if value.is_a? ::Hash
           if options[:for] == :to_hash
             value.to_hash
           else
-            value.nested_under_indifferent_access
+            self.class.new(value)
           end
-        elsif value.is_a?(Array)
+        elsif value.is_a?(::Array)
           if options[:for] != :assignment || value.frozen?
             value = value.dup
           end
