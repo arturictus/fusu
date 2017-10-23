@@ -7,3 +7,5 @@ module Fusu
 end
 require "fusu/array"
 require "fusu/hash"
+require "fusu/string"
+require "fusu/regexp"
