@@ -22,4 +22,10 @@ describe Fusu::HashWithIndifferentAccess do
     expect(s[:address2][:country][:language]).to eq 'ES'
     expect(s.fetch(:address2).fetch(:country).fetch(:language)).to eq 'ES'
   end
+
+  it '#fetch' do
+    s = described_class.new(data)
+    expect(s.fetch(:name)).to eq 'Artur'
+    expect(s.fetch('name')).to eq 'Artur'
+  end
 end
