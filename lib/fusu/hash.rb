@@ -8,5 +8,9 @@ module Fusu
     extend Keys
     extend ReverseMerge
     extend DeepMerge
+
+    def extractable_options?(elem)
+      elem.instance_of?(::Hash)
+    end
   end
 end

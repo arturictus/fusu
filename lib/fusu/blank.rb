@@ -11,5 +11,9 @@ module Fusu
         false
       end
     end
+
+    def presence(elem)
+      blank?(elem) ? nil : elem
+    end
   end
 end
