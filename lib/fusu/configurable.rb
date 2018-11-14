@@ -1,9 +1,3 @@
-# frozen_string_literal: true
-
-# require "active_support/concern"
-# require "active_support/ordered_options"
-# require "active_support/core_ext/array/extract_options"
-# require "active_support/core_ext/regexp"
 require "fusu/concern"
 require "fusu/ordered_options"
 
@@ -48,7 +42,7 @@ module Fusu
       # Defines both class and instance config accessors.
       #
       #   class User
-      #     include ActiveSupport::Configurable
+      #     include Fusu::Configurable
       #     config_accessor :allowed_access
       #   end
       #
@@ -66,7 +60,7 @@ module Fusu
       # The attribute name must be a valid method name in Ruby.
       #
       #   class User
-      #     include ActiveSupport::Configurable
+      #     include Fusu::Configurable
       #     config_accessor :"1_Badname"
       #   end
       #   # => NameError: invalid config attribute name
@@ -75,7 +69,7 @@ module Fusu
       # To opt out of the instance reader method, pass <tt>instance_reader: false</tt>.
       #
       #   class User
-      #     include ActiveSupport::Configurable
+      #     include Fusu::Configurable
       #     config_accessor :allowed_access, instance_reader: false, instance_writer: false
       #   end
       #
@@ -88,7 +82,7 @@ module Fusu
       # Or pass <tt>instance_accessor: false</tt>, to opt out both instance methods.
       #
       #   class User
-      #     include ActiveSupport::Configurable
+      #     include Fusu::Configurable
       #     config_accessor :allowed_access, instance_accessor: false
       #   end
       #
@@ -101,7 +95,7 @@ module Fusu
       # Also you can pass a block to set up the attribute with a default value.
       #
       #   class User
-      #     include ActiveSupport::Configurable
+      #     include Fusu::Configurable
       #     config_accessor :hair_colors do
       #       [:brown, :black, :blonde, :red]
       #     end
@@ -132,10 +126,10 @@ module Fusu
 
     # Reads and writes attributes from a configuration <tt>OrderedHash</tt>.
     #
-    #   require 'active_support/configurable'
+    #   require 'fusu/configurable'
     #
     #   class User
-    #     include ActiveSupport::Configurable
+    #     include Fusu::Configurable
     #   end
     #
     #   user = User.new
