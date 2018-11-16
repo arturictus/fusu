@@ -20,7 +20,7 @@ module Fusu
     #   options(1, 2)        # => {}
     #   options(1, 2, a: :b) # => {:a=>:b}
     def self.extract_options!(ary)
-      if ary.last.is_a?(Hash) && Fusu::Hash.extractable_options?(ary.last)
+      if ary.last.is_a?(::Hash) && Fusu::Hash.extractable_options?(ary.last)
         ary.pop
       else
         {}
